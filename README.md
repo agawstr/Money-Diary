@@ -1,6 +1,6 @@
 # Money Diary
 
-Catatan pengeluaran pribadi, bergaya Liquid Glass sky blue dan meniru tata letak Money Manager. Tanpa backend dan tanpa build: file statis, bisa di GitHub Pages/Vercel. Setelah dibuka sekali, bisa dipakai offline (service worker).
+Catatan pengeluaran pribadi, bergaya Liquid Glass sky blue dan meniru tata letak Money Manager. Proyek ini tidak berafiliasi dengan Money Manager. Tanpa backend dan tanpa build: file statis, bisa di GitHub Pages/Vercel. Setelah dibuka sekali, bisa dipakai offline (service worker).
 
 ## Menjalankan
 - Vercel: impor repo (Framework Preset: *Other*, tanpa build command), atau `vercel --prod` dari folder ini.
