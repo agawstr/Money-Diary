@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Money Diary</title>
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<script>(function(){try{var t=localStorage.getItem("md_theme")||"auto",l=matchMedia("(prefers-color-scheme: light)").matches,r=t==="auto"?(l?"light":"dark"):t;document.documentElement.dataset.theme=r;document.documentElement.dataset.themePref=t;if(localStorage.getItem("md_hide_boot")!=="0")document.documentElement.classList.add("hide-amt");var m=document.querySelector('meta[name=theme-color]');if(m)m.content=r==="light"?"#f2f2f7":"#000000"}catch(e){document.documentElement.dataset.theme="dark"}})()</script>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Money Diary">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="Catatan pengeluaran pribadi: ringkasan, riwayat, dan impor dari Money Manager.">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="apple-touch-startup-image" href="icons/splash/1290x2796-dark.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)">
+<link rel="apple-touch-startup-image" href="icons/splash/1290x2796-light.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)">
+<link rel="apple-touch-startup-image" href="icons/splash/1179x2556-dark.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)">
+<link rel="apple-touch-startup-image" href="icons/splash/1179x2556-light.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)">
+<link rel="apple-touch-startup-image" href="icons/splash/1206x2622-dark.png" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)">
+<link rel="apple-touch-startup-image" href="icons/splash/1206x2622-light.png" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)">
+<link rel="apple-touch-startup-image" href="icons/splash/1320x2868-dark.png" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)">
+<link rel="apple-touch-startup-image" href="icons/splash/1320x2868-light.png" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)">
+<link rel="apple-touch-startup-image" href="icons/splash/1170x2532-dark.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)">
+<link rel="apple-touch-startup-image" href="icons/splash/1170x2532-light.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)">
+<link rel="apple-touch-startup-image" href="icons/splash/1284x2778-dark.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)">
+<link rel="apple-touch-startup-image" href="icons/splash/1284x2778-light.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)">
+<link rel="apple-touch-startup-image" href="icons/splash/1125x2436-dark.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)">
+<link rel="apple-touch-startup-image" href="icons/splash/1125x2436-light.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)">
+<link rel="apple-touch-startup-image" href="icons/splash/1080x2340-dark.png" media="(device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)">
+<link rel="apple-touch-startup-image" href="icons/splash/1080x2340-light.png" media="(device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)">
+<link rel="apple-touch-startup-image" href="icons/splash/1242x2688-dark.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)">
+<link rel="apple-touch-startup-image" href="icons/splash/1242x2688-light.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)">
+<link rel="apple-touch-startup-image" href="icons/splash/828x1792-dark.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) and (prefers-color-scheme: dark)">
+<link rel="apple-touch-startup-image" href="icons/splash/828x1792-light.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) and (prefers-color-scheme: light)">
+<link rel="apple-touch-startup-image" href="icons/splash/750x1334-dark.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) and (prefers-color-scheme: dark)">
+<link rel="apple-touch-startup-image" href="icons/splash/750x1334-light.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) and (prefers-color-scheme: light)">
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="wrap">
+  <header class="appbar">
+    <div class="mon" id="appmon"><button type="button" id="m-prev" aria-label="Bulan sebelumnya">&lsaquo;</button><button type="button" id="m-lab" aria-haspopup="dialog" aria-label="Pilih bulan dan tahun"><span class="lt">Semua waktu</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button type="button" id="m-next" aria-label="Bulan berikutnya">&rsaquo;</button></div>
+    <button type="button" class="ibtn" id="m-eye" aria-label="Tampilkan atau sembunyikan nominal" aria-pressed="true"><svg class="ey-o" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="ey-c" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.9 17.9A10.4 10.4 0 0 1 12 19C5.6 19 2 12 2 12a18 18 0 0 1 4.1-5.1M9.9 5.2A9.7 9.7 0 0 1 12 5c6.4 0 10 7 10 7a18 18 0 0 1-2.2 3.2"/><path d="M14.1 14.1a3 3 0 1 1-4.2-4.2"/><path d="M3 3l18 18"/></svg></button>
+    <button type="button" class="ibtn" id="m-set" aria-label="Pengaturan data"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button></header>
+  <h1 class="ptitle" id="ptitle">Beranda</h1>
+  <div class="toptabs" id="toptabs" hidden></div>
+  <div class="strip" id="strip"><div><small>Pemasukan</small><b id="s-in" class="g">Rp0</b></div><div><small>Pengeluaran</small><b id="s-ex">Rp0</b></div><div><small>Total</small><b id="s-net" class="g">Rp0</b></div></div>
+
+  <nav class="tabbar" id="tabbar" aria-label="Menu utama">
+    <div class="brand" aria-hidden="true"><i></i><b>Money Diary</b></div>
+    <span class="tab-ind" aria-hidden="true"></span>
+    <button type="button" class="tab on" data-nav="home"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg><span>Beranda</span></button>
+    <button type="button" class="tab" data-nav="wal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7a2 2 0 0 1 2-2h11v4"/><rect x="4" y="7" width="16" height="12" rx="2.6"/><path d="M16 13h2"/></svg><span>Dompet</span></button>
+    <button type="button" class="tab" data-nav="tl"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M9 9h6M9 13h6"/></svg><span>Transaksi</span></button>
+    <button type="button" class="tab" data-nav="cat"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span>Statistik</span></button>
+    <button type="button" class="tab" data-nav="plan"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6"/></svg><span>Rencana</span></button>
+  </nav>
+  <button type="button" class="add-btn fab" id="add-btn" aria-label="Catat transaksi baru"><b>+</b><span>Catat transaksi</span></button>
+
+  <div id="navbar" aria-hidden="true"><span id="nb-t"></span></div>
+
+  <div id="status" role="status"></div>
+
+  <div id="filters">
+    <div id="flt-info"></div>
+  </div>
+
+  <main>
+    <section id="view-home"><div id="home"></div></section>
+
+    <section id="view-wal" hidden><div id="wallets"></div></section>
+
+    <section id="view-sum" hidden>
+      <div class="col">
+      <div id="stats"></div>
+      <h2 class="sec">Per bulan</h2>
+      <div id="mchart"></div>
+      <div class="lgd"><span><i class="e"></i>Pengeluaran</span><span><i class="i"></i>Pemasukan</span></div>
+      </div>
+      <div class="col">
+      <h2 class="sec">Pengeluaran harian</h2>
+      <div id="cal-wrap"><div id="cal"></div></div>
+      <div class="lgd"><span><i class="c0"></i>Kosong</span><span><i class="c1"></i>Sedikit</span><span><i class="c2"></i>Sedang</span><span><i class="c3"></i>Banyak</span></div>
+      <h2 class="sec">Paling sering dibeli</h2>
+      <div id="notes"></div>
+      </div>
+    </section>
+
+    <section id="view-tl" hidden>
+      <div id="tl-bar"><input type="search" id="tl-q" placeholder="Cari catatan, kategori, nominal…" aria-label="Cari riwayat" autocomplete="off"></div>
+      <div id="timeline"></div>
+      <button type="button" class="btn-s" id="tl-more" hidden>Tampilkan lebih banyak</button>
+    </section>
+
+    <section id="view-cal" hidden><div id="calv"></div></section>
+
+    <section id="view-st" hidden>
+      <div id="st-body"></div>
+    </section>
+
+    <section id="view-plan" hidden><div id="budget"></div></section>
+
+    <section id="view-data" hidden>
+      <div id="data"></div>
+    </section>
+  </main>
+  <footer class="foot">Data disimpan di perangkat ini, tanpa server. Jangan lupa unduh backup.</footer>
+</div>
+
+<div class="overlay" id="sheet-ov">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="grab" aria-hidden="true"></div>
+    <button class="x" id="sheet-x" aria-label="Tutup">&times;</button>
+    <h3 id="sheet-title"></h3>
+    <div id="sheet-body"></div>
+  </div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/import.js"></script>
+<script src="assets/js/app.js"></script>
+<script>if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('sw.js').catch(function(){});</script>
+</body>
+</html>
