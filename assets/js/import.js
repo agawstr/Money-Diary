@@ -91,12 +91,11 @@
      Tiap transaksi punya c (grup), s (sub-kategori) dan tg (tag, mis. "darurat").
      Aturan dicek berurutan pada catatan (huruf kecil); yang cocok pertama menang.
      Bentuk: [regex, grup, sub, tag?]. Bagian "kamu bisa tambah di sini" cukup menambah baris. */
-  const G = { FOOD: 'Food', TRANS: 'Transport', HOBI: 'Hobi & Koleksi', FUN: 'Hiburan & Game', BILL: 'Tagihan & Langganan', SHOP: 'Belanja', SOC: 'Sosial & Hadiah', HEAL: 'Kesehatan & Pendidikan', OTHER: 'Other', ALLOW: 'Allowance', INC: 'Penghasilan Lain' };
+  const G = { FOOD: 'Food', TRANS: 'Transport', FUN: 'Hiburan & Game', BILL: 'Tagihan & Langganan', SHOP: 'Belanja', SOC: 'Sosial & Hadiah', HEAL: 'Kesehatan & Pendidikan', OTHER: 'Other', ALLOW: 'Allowance', INC: 'Penghasilan Lain' };
   /* sub-kategori yang tersedia per grup (urutan = urutan chip di form) */
   const SUBS = {
     'Food': ['Makan harian', 'Ayam & Fast food', 'Kopi & Jajan', 'Minimarket'],
     'Transport': ['Ojol', 'Mobil', 'KRL & Bus', 'e-Money'],
-    'Hobi & Koleksi': ['Langganan & Live', 'Event & Konser', 'Merch & Koleksi', 'Lainnya'],
     'Hiburan & Game': ['Game', 'Koleksi', 'Nonton & Hangout', 'Hobi', 'Liburan'],
     'Tagihan & Langganan': ['Langganan', 'Pulsa & Internet', 'Listrik & Air'],
     'Belanja': ['Online', 'Pakaian', 'Kecantikan', 'Rumah tangga', 'Elektronik'],
@@ -108,9 +107,6 @@
   };
   const R = (re, g, s, tag) => [re, g, s, tag];
   const SUB_RULES = [
-    /* --- hobi & koleksi (paling atas supaya tidak tertimpa aturan umum) --- */
-    R(/\b(konser|concert|festival|fest|nobar|offair)\b/, G.HOBI, 'Event & Konser'),
-    R(/\b(merch|merchandise|photocard|poster)\b/, G.HOBI, 'Merch & Koleksi'),
     /* --- tagihan & langganan (sebelum ojol/game supaya "gojek plus" tidak jadi Ojol) --- */
     R(/\b(spotify|netflix|youtube|disney|vidio|icloud|google|lightroom|capcut|gojek plus|grab unlimited|shopee vip|getcontact|gencontact|prime video)\b|^(tiktok|app)$/, G.BILL, 'Langganan'),
     R(/\b(telkom|telkomsel|pulsa|kuota|paket data|indosat|axis|smartfren|by\.?u|indihome|wifi|internet)\b/, G.BILL, 'Pulsa & Internet'),
@@ -129,17 +125,17 @@
     R(/\b(gitar|guitar|senar|ukulele)\b/, G.FUN, 'Hobi', 'gitar'),
     /* --- makan & minum --- */
     R(/\b(indomaret|alfamart|alfa|hypermart|superindo|supermarket|minimarket)\b/, G.FOOD, 'Minimarket'),
-    R(/\b(kopi|coffee|starbucks|janji jiwa|kenangan|latte|boba|es teh|jajan|snack|dessert|ice cream|gelato|donat|donut|roti)\b/, G.FOOD, 'Kopi & Jajan'),
+    R(/\b(kopi|coffee|starbucks|janji jiwa|kenangan|latte|boba|es teh|cikiluks|jajan|snack|dessert|ice cream|gelato|donat|donut|roti)\b/, G.FOOD, 'Kopi & Jajan'),
     R(/\b(wingstop|mcd|mcdonald|kfc|moon chicken|geprek|nashville|chicken|ayam|burger|pizza|hokben|richeese|gacoan|pop bowl|waka waka)\b/, G.FOOD, 'Ayam & Fast food'),
     /* --- belanja --- */
     R(/\b(laundry|galon|kabel|charger|dekor)\b/, G.SHOP, 'Rumah tangga'),
     R(/\b(baterai|lcd|casing|headset|earphone|powerbank|keyboard|mouse)\b/, G.SHOP, 'Elektronik'),
     R(/\b(thrift|parfume|parfum|h&m|miniso|uniqlo|baju|kaos|celana|sepatu)\b/, G.SHOP, 'Pakaian'),
-    R(/\b(cukur|barber|erha|guardian|watsons|skincare|salon)\b/, G.SHOP, 'Kecantikan'),
+    R(/\b(cukur|barber|erha|guardian|watsons|skincare|public shower|salon)\b/, G.SHOP, 'Kecantikan'),
     R(/\b(shopee|tokopedia|tokped|tiktok shop|lazada|blibli)\b/, G.SHOP, 'Online'),
     /* --- kesehatan & pendidikan --- */
     R(/\b(gym|pijet|pijat|rumah sakit|dokter|klinik|apotek|obat|vitamin)\b/, G.HEAL, 'Kesehatan'),
-    R(/\b(fotokopi|print|buku|ukt|spp|kursus|kuliah|praktikum)\b/, G.HEAL, 'Pendidikan'),
+    R(/\b(fotokopi|print|mmd|buku|ukt|spp|kursus|kuliah|praktikum)\b/, G.HEAL, 'Pendidikan'),
     /* --- sosial --- */
     R(/\b(kas|patungan|iuran)\b/, G.SOC, 'Kas & Patungan'),
     R(/\b(hadiah|kado|ultah|gift)\b/, G.SOC, 'Hadiah'),
@@ -161,7 +157,7 @@
     tagihan: [G.BILL, ''], langganan: [G.BILL, 'Langganan'], handphone: [G.BILL, 'Pulsa & Internet', 'handphone'],
     guitar: [G.FUN, 'Hobi', 'gitar'], 'oleh-oleh': [G.SOC, 'Oleh-oleh'],
     darurat: [G.OTHER, '', 'darurat'], away: [G.FUN, 'Liburan', 'away'], subsidi: [G.OTHER, '', 'subsidi'], stock: [G.OTHER, '', 'investasi'],
-    'hobi & koleksi': [G.HOBI, ''], other: [G.OTHER, ''], lainnya: [G.OTHER, '']
+    other: [G.OTHER, ''], lainnya: [G.OTHER, '']
   };
   const LEGACY_INC = { allowance: [G.ALLOW, ''], salary: [G.OTHER, 'Gaji'], thr: [G.OTHER, 'THR', 'thr'], joki: [G.INC, 'Joki', 'joki'], stock: [G.INC, 'Saham', 'investasi'], subsidi: [G.OTHER, 'Subsidi', 'subsidi'], handphone: [G.OTHER, 'Lainnya', 'handphone'], other: [G.OTHER, 'Lainnya'], lainnya: [G.OTHER, 'Lainnya'] };
   /* pemasukan: 3 kelompok = Uang saku (Allowance) | Penghasilan sampingan (Penghasilan Lain) | Lain-lain (Other) */
@@ -180,7 +176,7 @@
     if (lg && lg[2]) tg.push(lg[2]);
     for (const u of USER) if (u.kind === k && n && n.includes(u.k)) return { c: u.g, s: u.s, tg: [...new Set(tg.concat(u.tg))] };
     for (const [re, g, s, t] of rules) {
-      if (re.test(n) || (d && g === G.HOBI && re.test(d) && (!old || old === 'other'))) {
+      if (re.test(n) || (d && g === G.JKT && re.test(d) && (!old || old === 'other'))) {
         if (t && !tg.includes(t)) tg.push(t);
         return { c: g, s, tg };
       }
